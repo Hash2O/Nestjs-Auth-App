@@ -1,9 +1,10 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, ForbiddenException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
 import { AuthDTO } from './dto/auth.dto';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt'; 
 import { jwtSecret } from '../utils/constants';
+import { Request, Response } from 'express';
 
 @Injectable()
 export class AuthService {
@@ -31,7 +32,7 @@ export class AuthService {
         return {message: 'Successful signup, welcome here !'};
     }
 
-    async signin(dto: AuthDTO) 
+    async signin(dto: AuthDTO, req: Request, res: Response) 
     {
         const { email, password } = dto;
 
@@ -56,7 +57,15 @@ export class AuthService {
             email: foundUser.email,
         });
 
-        return { token, message: 'Successful signin, nice to see you again !'};
+        //Stop the function is no token has been found
+        if(!token) {
+            throw new ForbiddenException()
+        }
+
+        //if token is found, send it to the client in a cookie
+        res.cookie('token', token);
+
+        return res.send({message: 'Logged in successfully. Nice to see you again !'});
     }
 
     async signout() {
