@@ -3,6 +3,7 @@
 3 - Create auth module with basic controller and service 
     -> nest g resource auth --no-spec (for no test files on create)/ REST API / no entry points
 4 - Init Prisma schema with module and service
+    -> npm install prisma --save-dev and npx prisma init
 5 - Connect Prisma service with auth service
 6 - Development on auth service (JWT impl, dto with validation pipe, hashed psw and so on)
 7 - JWT strategy and guard, allow cookies ?
