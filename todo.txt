@@ -9,7 +9,7 @@
     -> npm i class-validator class-transformer
 6 - Development on auth service (JWT impl, dto with validation pipe, hashed psw and so on)
     -> npm i -D @types/bcrypt and npm i bcrypt
-    -> npx prisma studio (help monitor endpoints made with Postman)
+    -> npx prisma studio (help monitor endpoints made with Postman, work on localhost:5555)
 7 - JWT strategy and guard, allow cookies ?
 8 - Create users module with controller and service
 9 - Wrap up 
