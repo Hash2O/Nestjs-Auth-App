@@ -6,7 +6,7 @@ export class UsersService {
     constructor(private prisma: PrismaService) {}
 
     async getSingleUser(id: string) {
-
+        return await this.prisma.user.findUnique({where: {id}, select: {id: true, email: true}});
     }
 
     //Only show id and email when returning users list

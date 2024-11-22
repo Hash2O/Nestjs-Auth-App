@@ -11,7 +11,10 @@
     -> npm i -D @types/bcrypt and npm i bcrypt
     -> npx prisma studio (help monitor endpoints made with Postman, work on localhost:5555)
     -> npm i @nestjs/jwt
-7 - JWT strategy and guard, allow cookies ?
+7 - Create cookies 
     -> npm i cookie-parser and npm i -D @types/cookie-parser
 8 - Create users module with controller and service
-9 - Wrap up 
+    -> nest g resource users --no-spec (for no test files on create)/ REST API / no entry points
+9 - JWT strategy and guard
+    -> npm i @nestjs/passport passport passport-jwt
+10 - Wrap up 
