@@ -68,8 +68,9 @@ export class AuthService {
         return res.send({message: 'Logged in successfully. Nice to see you again !'});
     }
 
-    async signout() {
-        return {message: 'Successful signout, see you soon !'};
+    async signout(req: Request, res: Response) {
+        res.clearCookie('token');
+        return res.send({message: 'You have been logged out successfully. See you soon !'});
     }
 
 
